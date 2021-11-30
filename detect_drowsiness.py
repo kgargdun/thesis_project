@@ -17,8 +17,8 @@ import geocoder
 g = geocoder.ip('me')
 print(str(g.latlng))
 
-account_sid = 'AC19dba6f6ff8d6cd47af6b46261149839'
-auth_token = 'baa4299af364b08f63b73ae64fce45cc'
+account_sid = 'XXX'
+auth_token = 'XXX'
 client = Client(account_sid, auth_token)
 
 
@@ -115,8 +115,8 @@ while True:
                         message = client.messages \
                             .create(
                             body="Drowsy driver detected at location " + str(g.latlng),
-                            from_='+19049017890',
-                            to='++918569944521'
+                            from_='XXX',
+                            to='XXX'
                         )
                         print(message.sid)
                         sms_eye = 0
