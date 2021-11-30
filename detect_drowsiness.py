@@ -52,8 +52,8 @@ ap.add_argument("-a", "--alarm", type=str, default="", help="path alarm .WAV fil
 ap.add_argument("-w", "--webcam", type=int, default=0, help="index of webcam on system")
 args = vars(ap.parse_args())
 
-EYE_AR_THRESH = 0.25
-EYE_AR_CONSEC_FRAMES = 25
+EAR_THRESH_RATIO = 0.25
+ADJ_FRAMES = 25
 message_eye = 1
 
 COUNTER = 0
@@ -95,10 +95,10 @@ while True:
         lip = shape[48:60]
         cv2.drawContours(frame, [lip], -1, (0, 255, 0), 1)
 
-        if ear < EYE_AR_THRESH:
+        if ear < EAR_THRESH_RATIO:
             COUNTER += 1
 
-            if COUNTER >= EYE_AR_CONSEC_FRAMES:
+            if COUNTER >= ADJ_FRAMES:
                 if not ALARM_ON:
                     ALARM_ON = True
                     if message_eye == 1:
